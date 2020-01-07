@@ -16,7 +16,20 @@ class MemberRepositoryTest {
 		private MemberRepository memberRepository;
 	
 	@Test
-	void test() {
+	void test() throws Exception{
+		
+//		MemberVO memberVO = new MemberVO();
+//		
+//		memberVO.setId("te1");
+//		memberVO.setPw("te1");
+//		memberVO.setName("te1");
+//	
+//		MemberVO ar = memberRepository.findByIdAndPw("test", "test");
+//		System.out.println(ar.getName());
+		
+
+		
+		
 		//페이징처리할떄 따로 메서드안만들고 여기서 처리해도되겟지?
 		//long count = memberRepository.count();
 		//System.out.println(count);
@@ -43,12 +56,12 @@ class MemberRepositoryTest {
 //			System.out.println("no data");
 //		}
 		
-		MemberVO memberVO = new MemberVO();
-		memberVO.setId("test101");
-		memberVO.setPw("test101");
-		memberVO.setName("rename");
-		
-		memberRepository.save(memberVO);
+//		MemberVO memberVO = new MemberVO();
+//		memberVO.setId("test199");
+//		memberVO.setPw("test199");
+//		memberVO.setName("test199");
+//		
+//		memberRepository.save(memberVO);
 		
 		
 	}

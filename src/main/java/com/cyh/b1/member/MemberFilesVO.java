@@ -18,7 +18,7 @@ public class MemberFilesVO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer fnum;
+	private int fnum;
 	private String id;
 	private String fname;
 	private String oname;

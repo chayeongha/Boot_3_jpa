@@ -23,8 +23,7 @@ public class MemberVO {
 	//변수명이틀릴떈 이렇게 변수명을 따로 설정이가능 .@Column(name = "password")
 	//@Column(name="password")
 	private String pw;
-	@Transient
-	private String pw2;
+	
 	private String name;
 	
 	private String email;
