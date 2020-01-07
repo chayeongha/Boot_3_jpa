@@ -98,13 +98,11 @@ public class MemberController {
 //			
 //		}
 		
-	
 		//로그인
 		@GetMapping("memberLogin")
 		public void memberLogin()throws Exception {
 			
 		}
-		
 		
 		@PostMapping("memberLogin")
 		public ModelAndView memberLogin(MemberVO memberVO,HttpSession session)throws Exception {
@@ -126,8 +124,6 @@ public class MemberController {
 			mv.setViewName("common/result");
 			
 			return mv;
-			
-			
 		}
 		
 		//마이페이지
@@ -136,16 +132,15 @@ public class MemberController {
 		
 			ModelAndView mv = new ModelAndView();
 			memberVO = (MemberVO)session.getAttribute("member");
-			Optional<MemberVO> ar = memberService.memberMypage(memberVO);
-			memberFilesVO = memberService.memberMyPage(memberFilesVO);
+			Optional<MemberVO> ar = memberService.memberPage(memberVO);
+			memberFilesVO = memberService.memberPage(memberFilesVO);
 			mv.addObject("file", memberFilesVO);
 			mv.addObject("member", ar);
-			mv.setViewName("member/memberPage");
+			mv.setViewName("member/memberPage");			
+			return mv;		
 			
-			return mv;
-			
-	
 		}
+			
 		
 		//로그아웃
 		@GetMapping("memberLogout")

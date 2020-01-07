@@ -22,11 +22,12 @@ public class MemberService {
 		
 	}
 	
-	public Optional<MemberVO> memberMypage(MemberVO memberVO)throws Exception{
+	public Optional<MemberVO> memberPage(MemberVO memberVO)throws Exception{
 		return memberRepository.findById(memberVO.getId());
+		
 	}
 	
-	public MemberFilesVO memberMyPage(MemberFilesVO memberFilesVO)throws Exception{
+	public MemberFilesVO memberPage(MemberFilesVO memberFilesVO)throws Exception{
 		return memberFilesRepository.findByFname(memberFilesVO.getFname());
 	}
 	

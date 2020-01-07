@@ -10,4 +10,5 @@ public interface MemberFilesRepository extends JpaRepository<MemberFilesVO, Inte
 	public List<MemberFilesVO> findById(String id)throws Exception;
 	
 	public MemberFilesVO findByFname(String fname)throws Exception;
-}
+}	
+
