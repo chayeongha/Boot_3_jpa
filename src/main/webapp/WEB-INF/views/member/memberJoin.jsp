@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
@@ -20,12 +18,11 @@
 
 		<form:form action="./memberJoin" modelAttribute="memberVO"  method="post" enctype="multipart/form-data">
 		
-			<div class="form-group">		
-				<label for="id">id:</label> 
-				<form:input path="id" placeholder="Enter id" class="form-control" id="id"/>
-				<form:errors path="id" cssStyle="color:red;" />
-				
-			</div>
+			  <div class="form-group">
+    			<label for="id">id:</label>
+    			<form:input path="id" class="form-control" id="id" placeholder="Enter id"/>
+    			<form:errors path="id"/>
+  				</div>
 			
 			<div class="form-group">
 				<label for="pw">Password:</label> 
@@ -62,7 +59,29 @@
 		
 	</div>
 
-
+<script type="text/javascript">
+	$('#id').blur(function(){
+		var id=$('#id').val();
+	$.ajax({
+			type:"POST",
+			url:"./memberIdCheck",
+			data:{
+				id:id
+				
+				},
+			success:function(data){//결과물이 data로 들어오게됨
+				if(data){
+					alert("중복id");
+					$('#id').val("");
+					 
+					}
+				else{
+					alert("사용가능id");
+					}
+				}
+			});
+	});
+</script>
 
 
 

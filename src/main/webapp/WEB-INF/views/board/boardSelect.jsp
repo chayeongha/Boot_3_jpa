@@ -17,31 +17,31 @@
 			<div class="form-group">
 		      <label class="control-label col-sm-2" for="title">제목</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="title" value="${notice.title }" readonly="readonly">
+	      			<input type="text" class="form-control" id="title" value="${noticeVO.title }" readonly="readonly">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="writer">작성자</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="writer" value="${notice.writer}" readonly="readonly">
+	      			<input type="text" class="form-control" id="writer" value="${noticeVO.writer}" readonly="readonly">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="contents">내용</label>
 				<div class="col-sm-10">
-	      			<input class="form-control" id="contents" value="${notice.contents }" readonly="readonly" style="width: 100%; height: 500px;">
+	      			<input class="form-control" id="contents" value="${noticeVO.contents }" readonly="readonly" style="width: 100%; height: 500px;">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="regDate">작성날짜</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="regDate" value="${notice.regDate }" readonly="readonly">
+	      			<input type="text" class="form-control" id="regDate" value="${noticeVO.regDate }" readonly="readonly">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="hit">조회수</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="hit" value="${notice.hit}" readonly="readonly">
+	      			<input type="text" class="form-control" id="hit" value="${noticeVO.hit}" readonly="readonly">
 				</div>
 	    	</div>
 	    	

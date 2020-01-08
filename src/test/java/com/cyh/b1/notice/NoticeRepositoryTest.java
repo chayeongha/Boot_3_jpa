@@ -20,18 +20,19 @@ class NoticeRepositoryTest {
 		@Test
 		void test2() {
 			
-			List<NoticeVO> ar = noticeRepository.findAllByOrderByNum();
+			NoticeVO noticeVO = noticeRepository.findById(21).get();
+			System.out.println(noticeVO.getWriter());
 			
 		}
 		
 		
 		//@Test
-		void test() {
-			NoticeVO noticeVO = noticeRepository.findById(6).get();
-			System.out.println(noticeVO.getWriter());
-			for(NoticeFilesVO noticeFilesVO: noticeVO.getNoticeFilesVOs()) {
-				System.out.println(noticeFilesVO.getFname());
-			}
-		}
+//		void test() {
+//			NoticeVO noticeVO = noticeRepository.findById(6).get();
+//			System.out.println(noticeVO.getWriter());
+//			for(NoticeFilesVO noticeFilesVO: noticeVO.getNoticeFilesVOs()) {
+//				System.out.println(noticeFilesVO.getFname());
+//			}
+//		}
 
 }

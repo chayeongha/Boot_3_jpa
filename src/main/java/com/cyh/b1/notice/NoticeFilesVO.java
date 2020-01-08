@@ -14,9 +14,9 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+@Data
 @Entity
 @Table(name = "noticeFiles")
-@Data
 public class NoticeFilesVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,7 @@ public class NoticeFilesVO {
 	@ManyToOne
 	@JoinColumn(name = "num")
 	private NoticeVO noticeVO;
+
 	
 	
 	

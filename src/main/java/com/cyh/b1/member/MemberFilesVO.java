@@ -31,6 +31,7 @@ public class MemberFilesVO {
 	@OneToOne
 	@JoinColumn(name = "id") //포린키 id를 연결하겠습니다.
 	private MemberVO memberVO;
-	
+
+
 	
 }

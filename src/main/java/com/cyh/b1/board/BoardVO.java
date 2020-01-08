@@ -17,15 +17,15 @@ import lombok.Setter;
 @Data
 @MappedSuperclass
 public class BoardVO {
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private int num;
 	private String title;
 	private String writer;
 	private String contents;
 	private Date regDate;
 	private int hit;
-
+	
 		
 		
 }

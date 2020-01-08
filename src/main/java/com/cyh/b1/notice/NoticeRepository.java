@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NoticeRepository extends JpaRepository<NoticeVO, Integer> {
 
-	public List<NoticeVO> findAllByOrderByNum()throws Exception;
+	public List<NoticeVO> findByNumGreaterThanOrderByNumDesc(Integer num) throws Exception;
 }

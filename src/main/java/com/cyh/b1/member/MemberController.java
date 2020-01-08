@@ -39,7 +39,7 @@ public class MemberController {
 		
 		//아이디체크
 		@PostMapping("memberIdCheck")
-		@ResponseBody//결과물을 바로제이슨으로 보내주는것.
+		@ResponseBody	//결과물을 json으로 보내주는것.
 		public boolean memberIdCheck(String id)throws Exception{
 			return memberService.memberIdCheck(id);
 		}

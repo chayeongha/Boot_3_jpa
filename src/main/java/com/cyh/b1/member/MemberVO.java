@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,4 +42,8 @@ public class MemberVO {
 	//@OneToOne(mappedBy = "join하는 entity(vo)에 선언된 자기자신의 entity(vo)변수명" )
 	@OneToOne(mappedBy = "memberVO" ,fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private MemberFilesVO memberFilesVO;
+
+
+	
+	
 }

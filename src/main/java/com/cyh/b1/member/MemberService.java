@@ -32,8 +32,8 @@ public class MemberService {
 	
 	
 	
-//	@Autowired
-//	private MemberFilesRepository memberFilesRepository;
+	@Autowired
+	private MemberFilesRepository memberFilesRepository;
 	
 
 		public void memberDelete(MemberVO memberVO) throws Exception{
@@ -60,11 +60,10 @@ public class MemberService {
 	}
 	
 	
+	
 	public boolean memberIdCheck(String id)throws Exception{
 		return memberRepository.existsById(id);
 	}
-	
-	
 	
 	
 	public MemberVO memberLogin(MemberVO memberVO)throws Exception {
