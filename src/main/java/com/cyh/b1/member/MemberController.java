@@ -57,46 +57,47 @@ public class MemberController {
 	
 		
 		
-//		//회원가입
-//		@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
-//		public String memberJoin()throws Exception {
-//		
-//			//MemberVO memberVO = new MemberVO();
-//			//model.addAttribute("memberVO", new MemberVO());
-//			
-//			return "member/memberJoin";
-//		}
-//		
-//		
-//	
-//		@PostMapping("memberJoin")										//files인이유 넘어가는 파라미터name과같게..
-//		public ModelAndView memberJoin(@Valid MemberVO memberVO,BindingResult bindingResult, MultipartFile files)throws Exception {
-//			
-//			ModelAndView mv= new ModelAndView();
-//			
-//			if(memberService.memberJoinValidate(memberVO, bindingResult)) {
-//			
-//				mv.setViewName("member/memberJoin");
-//				
-//			}else {
-//				
-//		
-//			int result = memberService.memberJoin(memberVO, files);
-//			
-//			String msg="join실패";
-//			String path="../";//루트밑
-//			if(result>0) {
-//				msg="Join Success";
-//			}
-//			mv.addObject("path", path);
-//			mv.addObject("msg", msg);
-//			mv.setViewName("common/result");
-//			
-//			}
-//			return mv;
-//			
-//			
-//		}
+		//회원가입
+		@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
+		public String memberJoin()throws Exception {
+		
+			//MemberVO memberVO = new MemberVO();
+			//model.addAttribute("memberVO", new MemberVO());
+			
+			return "member/memberJoin";
+		}
+		
+		
+	
+		@PostMapping("memberJoin")										//files인이유 넘어가는 파라미터name과같게..
+		public ModelAndView memberJoin(@Valid MemberVO memberVO,BindingResult bindingResult, MultipartFile files )throws Exception {
+			
+			ModelAndView mv= new ModelAndView();
+		
+			if(memberService.memberJoinValidate(memberVO, bindingResult)) {
+			
+				mv.setViewName("member/memberJoin");
+				
+			}else {
+				
+			memberVO= memberService.memberJoin(memberVO);
+			
+			String msg="join실패";
+			String path="../";//루트밑
+			if(memberVO != null) {
+				msg="Join Success";
+			}
+			mv.addObject("path", path);
+			mv.addObject("msg", msg);
+			mv.setViewName("common/result");
+			}
+			
+			
+			return mv;
+			}
+			
+			
+		
 		
 		//로그인
 		@GetMapping("memberLogin")
@@ -128,16 +129,8 @@ public class MemberController {
 		
 		//마이페이지
 		@GetMapping("memberPage")
-		public ModelAndView memberPage( MemberVO memberVO, HttpSession session, MemberFilesVO memberFilesVO)throws Exception {
+		public void memberPage( )throws Exception {
 		
-			ModelAndView mv = new ModelAndView();
-			memberVO = (MemberVO)session.getAttribute("member");
-			Optional<MemberVO> ar = memberService.memberPage(memberVO);
-			memberFilesVO = memberService.memberPage(memberFilesVO);
-			mv.addObject("file", memberFilesVO);
-			mv.addObject("member", ar);
-			mv.setViewName("member/memberPage");			
-			return mv;		
 			
 		}
 			

@@ -15,8 +15,76 @@ class MemberRepositoryTest {
 		@Autowired
 		private MemberRepository memberRepository;
 	
-	@Test
-	void test() throws Exception{
+		@Autowired
+		private MemberFilesRepository memberFilesRepository;
+		
+		@Test
+		void updateTest() {
+			MemberVO memberVO = new MemberVO();
+			memberVO.setId("c1");
+			memberVO.setPw("c1");
+			memberVO.setName("영하왕");
+			memberVO.setEmail("ckdudgk123@naver.com");
+			MemberFilesVO memberFilesVO = new MemberFilesVO();
+			memberFilesVO.setFnum(27);
+			memberFilesVO.setFname("reimg2.jpg");
+			memberFilesVO.setOname("reoname2.jpg");
+			memberVO.setMemberFilesVO(memberFilesVO);
+			memberFilesVO.setMemberVO(memberVO);
+					
+			memberRepository.save(memberVO);
+		}
+		
+		
+		//@Test
+		void deleteTest() {
+			memberRepository.deleteById("c6");
+		}
+		
+		
+		
+		
+		
+		//@Test
+		void InsertTest( ) {
+			MemberVO memberVO = new MemberVO();
+			memberVO.setId("t2001");
+			memberVO.setPw("t2001");
+			memberVO.setName("t2001");
+			memberVO.setEmail("t2001@t2001");
+			
+			MemberFilesVO memberFilesVO = new MemberFilesVO();
+			memberFilesVO.setFname("t2001@@@@.jpg");
+			memberFilesVO.setOname("t2001.jpg");
+			
+			memberVO.setMemberFilesVO(memberFilesVO);
+			
+			memberFilesVO.setMemberVO(memberVO);
+			
+			memberFilesRepository.save(memberFilesVO);
+			
+			
+			
+		}
+		
+		//@Test
+		void selectTest()throws Exception{
+			
+		Optional<MemberVO> opt	=memberRepository.findById("t100");
+	
+		MemberVO memberVO = opt.get();//꺼내는거
+	
+		System.out.println(memberVO.getName());
+		System.out.println(memberVO.getEmail());
+		System.out.println(memberVO.getMemberFilesVO().getFname());
+		System.out.println(memberVO.getMemberFilesVO().getMemberVO().getId());
+		
+		}
+		
+		
+		
+	//@Test
+	//void test() throws Exception{
 		
 //		MemberVO memberVO = new MemberVO();
 //		
@@ -64,6 +132,6 @@ class MemberRepositoryTest {
 //		memberRepository.save(memberVO);
 		
 		
-	}
+	//}
 
 }

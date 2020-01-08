@@ -24,7 +24,7 @@
     
     <div class="form-group">
       <label for="name">name</label>
-      <input type="text" class="form-control" id="name" name="name" value=">${member.name}" readonly="readonly">
+      <input type="text" class="form-control" id="name" name="name" value="${member.name}" readonly="readonly">
     </div>
     
      <div class="form-group">
@@ -32,13 +32,13 @@
       <input type="text" class="form-control" id="email" name="email" value="${member.email}" readonly="readonly">
     </div>
     
-<!--     	<div class="form-group"> -->
-<%-- 		 <img alt="이미지" src="../upload/${file.fname}"> --%>
-<!-- 		</div> -->
+    	<div class="form-group">
+		 <img alt="이미지" src="../upload/${member.memberFilesVO.fname}">
+		</div>
 		
-<!-- 		<div class="form-group"> -->
-<%--    			<a class="btn btn-primary" href="./memberFileDown?fnum=${member.fnum}">fileDown</a> --%>
-<!--   		</div> -->
+		<div class="form-group">
+   			<a class="btn btn-primary" href="./memberFileDown?fnum=${member.memberFilesVO.fnum}">fileDown</a>
+  		</div>
   
     <div>
     <button type="submit" class="btn btn-default">수정</button>

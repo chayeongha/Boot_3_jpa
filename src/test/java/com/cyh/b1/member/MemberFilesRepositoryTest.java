@@ -17,17 +17,27 @@ class MemberFilesRepositoryTest {
 	@Autowired
 	private MemberFilesRepository memberFilesRepository;
 
-
-
 	@Test
-	void test() throws Exception {
+	void selectTest() {
+		
+		MemberFilesVO memberFilesVO = memberFilesRepository.findById(5).get();
+		
+		System.out.println(memberFilesVO.getFname());
+		System.out.println(memberFilesVO.getMemberVO().getId());
+		
+	}
 
-		List<MemberFilesVO> ar= memberFilesRepository.findById("cyh2");
+	
+	
+	//@Test
+	//void test() throws Exception {
 
-		for (MemberFilesVO memberFilesVO : ar) {
-			System.out.println(memberFilesVO.getId());
-			System.out.println(memberFilesVO.getFname());
-		}
+//		List<MemberFilesVO> ar= memberFilesRepository.findById("cyh2");
+//
+//		for (MemberFilesVO memberFilesVO : ar) {
+//			System.out.println(memberFilesVO.getId());
+//			System.out.println(memberFilesVO.getFname());
+//		}
 
 		
 		
@@ -71,6 +81,6 @@ class MemberFilesRepositoryTest {
 		//			System.out.println("no data");
 		//		}
 
-	}
+//	}
 
 }

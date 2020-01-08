@@ -7,8 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberFilesRepository extends JpaRepository<MemberFilesVO, Integer>{
 	
-	public List<MemberFilesVO> findById(String id)throws Exception;
+	//public List<MemberFilesVO> findById(String id)throws Exception;
 	
-	public MemberFilesVO findByFname(String fname)throws Exception;
+	//public MemberFilesVO findByFname(String fname)throws Exception;
+	
+	
+	
 }	
 
