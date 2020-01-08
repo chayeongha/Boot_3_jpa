@@ -1,4 +1,4 @@
-package com.cyh.b1.util;
+package com.cyh.b1.member.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,12 +59,12 @@ public class FileDown extends AbstractView{
 		fi.close();
 	}
 
-	public static void main(String[] args) {
-		if(memberService.memberJoinValidate(memberVO, bindingResult)) {
-		//			
-		//				mv.setViewName("member/memberJoin");
-		//				
-		//			}else {
-	}
+//	public static void main(String[] args) {
+//		if(memberService.memberJoinValidate(memberVO, bindingResult)) {
+//		//			
+//		//				mv.setViewName("member/memberJoin");
+//		//				
+//		//			}else {
+//	}
 
 }

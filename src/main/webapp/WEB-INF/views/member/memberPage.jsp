@@ -15,7 +15,7 @@
 	<div class="container">
   <h2>member Page</h2>
   
-  <form action="./memberLogin">
+
     
     <div class="form-group">
       <label for="id">id:</label>
@@ -36,15 +36,16 @@
 		 <img alt="이미지" src="../upload/${member.memberFilesVO.fname}">
 		</div>
 		
-		<div class="form-group">
-   			<a class="btn btn-primary" href="./memberFileDown?fnum=${member.memberFilesVO.fnum}">fileDown</a>
-  		</div>
+<!-- 		<div class="form-group"> -->
+<%--    			<a class="btn btn-primary" href="./memberFileDown?fnum=${member.memberFilesVO.fnum}">fileDown</a> --%>
+<!--   		</div> -->
   
     <div>
-    <button type="submit" class="btn btn-default">수정</button>
+  	 	<a href="./memberUpdate" class="btn btn-primary">Update</a>
+		<a href="./memberDelete" class="btn btn-danger">Delete</a>
  	</div>
   
-  </form>
+
 </div>
 
 

@@ -1,4 +1,4 @@
-package com.cyh.b1.util;
+package com.cyh.b1.member.util;
 
 import java.io.File;
 

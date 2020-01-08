@@ -3,6 +3,7 @@ package com.cyh.b1.member;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,6 +39,6 @@ public class MemberVO {
 	
 	
 	//@OneToOne(mappedBy = "join하는 entity(vo)에 선언된 자기자신의 entity(vo)변수명" )
-	@OneToOne(mappedBy = "memberVO" , cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "memberVO" ,fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private MemberFilesVO memberFilesVO;
 }

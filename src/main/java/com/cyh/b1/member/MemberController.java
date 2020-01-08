@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,25 @@ public class MemberController {
 		@Autowired
 		private MemberService memberService;
 		
-	
+		@GetMapping("memberDelete")
+		public String memberDelete(HttpSession session)throws Exception {
+			
+			MemberVO memberVO = (MemberVO)session.getAttribute("member");
+			memberService.memberDelete(memberVO);
+			session.invalidate();
+			return "redirect:../";
+		}
+		
+		
+		
+		//아이디체크
+		@PostMapping("memberIdCheck")
+		@ResponseBody//결과물을 바로제이슨으로 보내주는것.
+		public boolean memberIdCheck(String id)throws Exception{
+			return memberService.memberIdCheck(id);
+		}
+		
+		
 		
 //		//파일다운
 //		@GetMapping("memberFileDown")
@@ -48,9 +67,45 @@ public class MemberController {
 //			return mv;
 //		}
 //		
+		
+		
+		//업데이트
+		@GetMapping("memberUpdate")
+		public ModelAndView memberUpdate(MemberVO memberVO,HttpSession session, ModelAndView mv)throws Exception {
+			 
+			memberVO = (MemberVO)session.getAttribute("member");
+			 mv.addObject("memberVO", memberVO);
+			 mv.setViewName("member/memberUpdate");
+			 return mv;
+		}
+		
+		@PostMapping("memberUpdate")
+		public ModelAndView memberUpdate(MemberVO memberVO, MultipartFile files, HttpSession session)throws Exception{
+			
+			MemberVO loginVO = (MemberVO)session.getAttribute("member");
+			
+			System.out.println(memberVO.getMemberFilesVO());
+			
+			memberVO.setMemberFilesVO(loginVO.getMemberFilesVO());
+			
+			memberVO = memberService.memberUpdate(memberVO, files);
+			
+			session.setAttribute("member", memberVO);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("msg", "Update Success");
+			mv.addObject("path", "memberPage");
+			
+			mv.setViewName("common/result");
+			
+			return mv;
+			
+		}
+		
 		//memberVO를 가져옴.
 		@ModelAttribute
 		public MemberVO getMemberVO( )throws Exception {
+			
 			
 			return new MemberVO();
 		}
@@ -80,7 +135,7 @@ public class MemberController {
 				
 			}else {
 				
-			memberVO= memberService.memberJoin(memberVO);
+			memberVO= memberService.memberJoin(memberVO, files);
 			
 			String msg="join실패";
 			String path="../";//루트밑
