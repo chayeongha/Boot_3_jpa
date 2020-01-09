@@ -16,11 +16,11 @@
 <c:import url="../template/nav.jsp" />
 
 <div class="container">
-	<h2 style="text-align: center;">Notice Write</h2>
-	<form:form modelAttribute="noticeVO" id="frm" enctype="multipart/form-data" action="noticeWrite" method="post">
+	<h2 style="text-align: center;">${board}Write</h2>
+	<form:form modelAttribute="boardVO" id="frm" enctype="multipart/form-data" action="noticeWrite" method="post">
 			<div class="form-group">
 		      <label for="writer">Writer:</label>
-		      <form:input  class="form-control" path="writer" value="${member.name}" readonly="readonly"/>
+		      <form:input  class="form-control" path="writer"  readonly="readonly" value="${member.name}"/>
 		      <form:errors path="writer"/>
 		    </div>
 		    

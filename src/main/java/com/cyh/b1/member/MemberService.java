@@ -45,9 +45,11 @@ public class MemberService {
 		
 		if(files.getSize()>0) {
 			File file = filePathGenerator.getUseClassPathResource("upload");
+		
 			String fileName = fileSaver.save(file, files);
 			MemberFilesVO memberFilesVO = memberVO.getMemberFilesVO();
 		
+			System.out.println(fileName);
 			memberFilesVO.setFname(fileName);
 			memberFilesVO.setOname(files.getOriginalFilename());
 			

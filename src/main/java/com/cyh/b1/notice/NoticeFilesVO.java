@@ -14,22 +14,20 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Data
 @Entity
+@Data
 @Table(name = "noticeFiles")
 public class NoticeFilesVO {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int fnum;
+	
 	private String fname;
 	private String oname;
 	
 	@ManyToOne
 	@JoinColumn(name = "num")
 	private NoticeVO noticeVO;
-
-	
-	
-	
 	
 }

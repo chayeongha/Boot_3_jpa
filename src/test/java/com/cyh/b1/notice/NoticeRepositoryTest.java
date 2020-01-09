@@ -20,7 +20,7 @@ class NoticeRepositoryTest {
 		@Test
 		void test2() {
 			
-			NoticeVO noticeVO = noticeRepository.findById(21).get();
+			NoticeVO noticeVO = noticeRepository.findById(1).get();
 			System.out.println(noticeVO.getWriter());
 			
 		}

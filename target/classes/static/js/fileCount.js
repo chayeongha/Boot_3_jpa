@@ -11,7 +11,7 @@
 				$("#files").append(result);
 				count++;
 			}else {
-				alert("첨부파일은 최대 5개만 가능합니다hahaha.");
+				alert("첨부파일은 최대 5개만 가능hapnida.");
 			}
 		});
 		

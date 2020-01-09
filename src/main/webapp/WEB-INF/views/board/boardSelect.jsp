@@ -12,38 +12,52 @@
 <c:import url="../template/nav.jsp"/>
 <div class="container">
 	
-<h2 style="text-align: center;">Notice Select</h2>
+<h2 style="text-align: center;">${board}Select</h2>
 		<form>
 			<div class="form-group">
 		      <label class="control-label col-sm-2" for="title">제목</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="title" value="${noticeVO.title }" readonly="readonly">
+	      			<input type="text" class="form-control" id="title" value="${vo.title }" readonly="readonly">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="writer">작성자</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="writer" value="${noticeVO.writer}" readonly="readonly">
+	      			<input type="text" class="form-control" id="writer" value="${vo.writer}" readonly="readonly">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="contents">내용</label>
 				<div class="col-sm-10">
-	      			<input class="form-control" id="contents" value="${noticeVO.contents }" readonly="readonly" style="width: 100%; height: 500px;">
+	      			<input class="form-control" id="contents" value="${vo.contents }" readonly="readonly" style="width: 100%; height: 500px;">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="regDate">작성날짜</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="regDate" value="${noticeVO.regDate }" readonly="readonly">
+	      			<input type="text" class="form-control" id="regDate" value="${vo.regDate }" readonly="readonly">
 				</div>
 	    	</div>
 	    	<div class="form-group">
 		      <label class="control-label col-sm-2" for="hit">조회수</label>
 				<div class="col-sm-10">
-	      			<input type="text" class="form-control" id="hit" value="${noticeVO.hit}" readonly="readonly">
+	      			<input type="text" class="form-control" id="hit" value="${vo.hit}" readonly="readonly">
 				</div>
 	    	</div>
+	    	
+	 
+	    	<div>
+	    			 <label class="control-label col-sm-2">이미지</label>
+	    	<c:forEach items="${vo.noticeFilesVOs }" var="file">
+	    			<img alt="iu.jpg입니다" src="../upload/${file.fname}" style="width: 200px; height: 200px;">
+	    			
+	    	</c:forEach>
+	    	</div>
+	    	
+	    	<div>
+	    	
+				<a class="btn btn-primary" href="./${board}List">리스트로</a>
+			</div>
 	    	
 		</form>
 	</div>

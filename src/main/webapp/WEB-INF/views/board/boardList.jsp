@@ -11,22 +11,34 @@
 <body>
 <c:import url="../template/nav.jsp"></c:import>
 <div class="contents">
+		
+		<div>
+				<a class="btn btn-primary" href="./${board}Write">글쓰기</a>
+		</div>
+	
+	<h2 style="text-align: center;">${board}LIST</h2>
+	
+	
 	<table class="table table-hover">
+		
+	
 		<tr>
 			<td>NUM</td>
 			<td>TITLE</td>
 			<td>WRITER</td>
 			<td>DATE</td>
 			<td>HIT</td>
+			
 		</tr>
 		
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td>${vo.num}</td>
-				<td><a href="noticeSelect?num=${vo.num }">${vo.title}</a></td>
+				<td><a href="./${board}Select?num=${vo.num}">${vo.title}</a></td>
 				<td>${vo.writer}</td>
 				<td>${vo.regDate}</td>
 				<td>${vo.hit}</td>
+				
 			</tr>
 		</c:forEach>
 	
@@ -34,6 +46,7 @@
 	
 
 </div>
+	
 	<div class="contents">
 		<c:if test="${pager.curBlock>1}">
 			<a href="./noticeList?curPage=${pager.startNum-1}">[이전]</a>
@@ -48,6 +61,6 @@
 		</c:if>
 	</div>
 	
-	<a class="btn btn-primary" href="${pageContext.request.contextPath}/notice/noticeWrite">글쓰기</a>
+	
 </body>
 </html>
