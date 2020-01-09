@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cyh.b1.board.BoardVO;
+import com.cyh.b1.member.util.Pager;
 
 @Controller
 @RequestMapping("notice/**")
@@ -27,7 +28,7 @@ public class NoticeController {
 	@Resource(name = "noticeService")
 	private NoticeService noticeService;
 	
-	
+	//글쓰기
 	@GetMapping("noticeWrite")
 	public String noticeWrite()throws Exception {
 	
@@ -58,22 +59,43 @@ public class NoticeController {
 	}
 	
 	
+	//리스트
+	
+	
+	//방법1
+//	@GetMapping("noticeList")
+//	public ModelAndView noticeList(Model model ,Pageable pageable) throws Exception{
+//		ModelAndView mv= new ModelAndView();
+//		
+//		//하이버네이트 2.0부터는 new x
+//		Pageable pageable2 =PageRequest.of(0, 10 ,Sort.Direction.DESC,"num");
+//		//0번주터 글 10개씩/.
+//		
+//		List<NoticeVO>ar=noticeService.boardList(pageable2);
+//		
+//		mv.addObject("list", ar);
+//		mv.setViewName("board/boardList");
+//		return mv;
+//	}
+	
+	//방법2
 	@GetMapping("noticeList")
-	public ModelAndView noticeList(Model model ,Pageable pageable) throws Exception{
-		ModelAndView mv= new ModelAndView();
+	public ModelAndView noticeList(Model model, Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		
-		//하이버네이트 2.0부터는 new x
-		Pageable pageable2 =PageRequest.of(0, 10 ,Sort.Direction.DESC,"num");
-		//0번주터 글 10개씩/.
 		
-		List<NoticeVO>ar=noticeService.boardList(pageable2);
+		//Pageable pageable2 = PageRequest.of(0, 10, Sort.Direction.ASC, "num");
 		
-		mv.addObject("list", ar);
+		
+		//List<NoticeVO> ar = noticeService.boardList(pageable2);
+		pager = noticeService.boardList(pager);
+		mv.addObject("list", pager);
 		mv.setViewName("board/boardList");
 		return mv;
 	}
 	
 	
+	//셀렉트
 	@GetMapping("noticeSelect")
 	public ModelAndView noticeSelect(ModelAndView mv,Integer num) throws Exception{
 		

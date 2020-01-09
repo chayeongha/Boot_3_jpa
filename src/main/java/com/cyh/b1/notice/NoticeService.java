@@ -11,12 +11,14 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 
 import com.cyh.b1.member.util.FilePathGenerator;
 import com.cyh.b1.member.util.FileSaver;
+import com.cyh.b1.member.util.Pager;
 
 @Service
 @Transactional
@@ -34,7 +36,7 @@ public class NoticeService {
 	private FileSaver fileSaver;
 	
 	
-	
+	//글쓰기
 	public NoticeVO boardWrite(NoticeVO noticeVO, List<MultipartFile>files)throws Exception{
 		
 		List<NoticeFilesVO>noticeFilesVOs = null;
@@ -81,24 +83,51 @@ public class NoticeService {
 		
 	}
 	
+	//리스트
 	
-	public List<NoticeVO> boardList(Pageable pageable) throws Exception{
+	
+//방법 1	
+//	public List<NoticeVO> boardList(Pageable pageable) throws Exception{
+//		
+//		Page<NoticeVO> p= noticeRepository.findByNumGreaterThan(0, pageable);
+//	//		for (NoticeVO noticeVO : ar) {
+//	//			noticeVO.getNoticeFilesVOs();
+//	//			
+//	//		}
+//		System.out.println(p.isFirst());
+//		System.out.println(p.isLast());
+//		
+//		
+//		System.out.println(p.getTotalPages());
+//		
+//		return p.getContent();
+//		
+//	}
 		
-		Page<NoticeVO> p= noticeRepository.findByNumGreaterThan(0, pageable);
-	//		for (NoticeVO noticeVO : ar) {
-	//			noticeVO.getNoticeFilesVOs();
-	//			
-	//		}
-		System.out.println(p.isFirst());
-		System.out.println(p.isLast());
+//방법2
+	public Pager boardList(Pager pager)throws Exception{
+		// PageRequest 생성
+		//Sort.by("num").descending().and(Sort.by("").ascending()
+		pager.makePageRequest(Sort.by("num").descending());
+		
+		Page<NoticeVO> p  = noticeRepository.findByNumGreaterThan(0, pager.getPageable());
 		
 		
-		System.out.println(p.getTotalPages());
+		pager.setPageList(p);
 		
-		return p.getContent();
+		//페이징 처리 계산
+		pager.makeNum();
 		
+		
+		return pager;
 	}
-		
+	
+	
+	
+	
+	
+	
+	//셀렉트
 	public Optional<NoticeVO> boardSelect(int num)throws Exception{
 		
 		return noticeRepository.findById(num);
