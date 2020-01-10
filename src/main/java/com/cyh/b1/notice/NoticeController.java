@@ -90,6 +90,7 @@ public class NoticeController {
 		//List<NoticeVO> ar = noticeService.boardList(pageable2);
 		pager = noticeService.boardList(pager);
 		mv.addObject("list", pager);
+	
 		mv.setViewName("board/boardList");
 		return mv;
 	}
