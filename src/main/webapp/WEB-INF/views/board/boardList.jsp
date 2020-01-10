@@ -12,6 +12,8 @@
 <c:import url="../template/nav.jsp"></c:import>
 <div class="contents">
 	<table class="table table-hover">
+		
+		<h1>hi</h1>
 		<tr>
 			<td>NUM</td>
 			<td>TITLE</td>
@@ -19,6 +21,7 @@
 			<td>DATE</td>
 			<td>HIT</td>
 		</tr>
+		
 		
 		<c:forEach items="${list}" var="vo">
 			<tr>
